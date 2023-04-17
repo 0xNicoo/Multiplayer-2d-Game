@@ -1,13 +1,15 @@
 import { Position } from "./atributes/position";
 
 export default class Player {
-    id: Number;
+    id: string;
     position: Position;
-    color: String = "#59B623";
+    color: string;
 
-    constructor(id: Number, positon: Position,  color: String){
+
+    constructor(id: string, positon: Position,  color: string){
         this.id = id;
         this.position = positon;
+        this.color = color
     }
 
 }
