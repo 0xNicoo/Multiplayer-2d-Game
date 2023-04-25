@@ -9,7 +9,7 @@ export default class ClientSocket {
   socket: Socket;
   game: Game;
   private updateInterval: any;
-  /**/
+
   keys: Array<boolean>;
 
   constructor(scene: Scene, camera: Camera) {
@@ -17,7 +17,7 @@ export default class ClientSocket {
     this.camera = camera;
     this.socket = io('http://localhost:3000');
     this.game = new Game(scene, camera)
-    /**/
+
     this.keys = [false,false,false,false];
     
     this.socket.on('connect', () => {

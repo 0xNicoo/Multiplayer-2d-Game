@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import cameraRender from './render/camerRender';
+import cameraRender from './render/cameraRender';
 import sceneRender from './render/sceneRender';
 import ClientSocket from './clientSocket';
 
