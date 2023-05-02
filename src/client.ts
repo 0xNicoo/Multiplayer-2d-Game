@@ -1,18 +1,25 @@
-import * as THREE from 'three';
-import cameraRender from './render/cameraRender';
-import sceneRender from './render/sceneRender';
-import ClientSocket from './clientSocket';
+import Render from "./entities/components/render";
+import Entity from "./entities/entity";
+import GameEngine from "./gameEngine"
+import PlayerRender from "./render/player-render";
 
-const renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById('app') as HTMLCanvasElement
-});
-renderer.setSize(window.innerWidth, window.innerHeight);
 
-const clientSocket = new ClientSocket(sceneRender, cameraRender)
+const canvas = document.getElementById('app') as HTMLCanvasElement;
+const ctx = canvas.getContext("2d")!;
+
+const game = new GameEngine(ctx);
+game.start()
+
+const testEntity = new Entity();
+const playerRender = new PlayerRender()
+const renderComponent = new Render(playerRender);
+testEntity.addComponent(renderComponent);
+
+game.addEntity(testEntity);
 
 
 /*MEJORAR ESTA BASURA*/
-
+/*
 document.addEventListener('keydown', (event) => {
     if(event.key == 'w'){
         clientSocket.keys[0] = true;
@@ -43,10 +50,4 @@ document.addEventListener('keyup', (event) => {
         clientSocket.keys[3] = false;
     }
 });
-
-function animate(){
-    requestAnimationFrame(animate);
-    renderer.render(clientSocket.game.scene, cameraRender)
-}
-
-animate();
+*/

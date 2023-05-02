@@ -1,4 +1,4 @@
-import { Camera, Renderer, Scene } from "three";
+/*import { Camera, Renderer, Scene } from "three";
 import Player from "./entities/player";
 import { Position } from "./entities/atributes/position";
 import PlayerRender from "./render/playerRender";
@@ -52,4 +52,4 @@ export default class Game{
         }
       })
     }
-}
+}*/

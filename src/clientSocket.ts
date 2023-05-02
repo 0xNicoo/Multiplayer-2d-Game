@@ -1,4 +1,4 @@
-import io, { Socket } from 'socket.io-client';
+/*import io, { Socket } from 'socket.io-client';
 import { Camera, Renderer, Scene } from 'three';
 import Game from './game';
 
@@ -59,4 +59,4 @@ export default class ClientSocket {
     this.socket.emit('keyUp', {keys: keys, playerId: this.game.player.id})
   }
 
-}
+}*/
