@@ -1,4 +1,5 @@
 import Component from "./components/component";
+import Position from "./components/position";
 import Render from "./components/render";
 
 export default class Entity  {
@@ -25,7 +26,7 @@ export default class Entity  {
     }
 
     update(): void{
-
+       
     }
 
 

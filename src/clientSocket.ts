@@ -1,4 +1,25 @@
 /*import io, { Socket } from 'socket.io-client';
+
+export default class ClientSocket {
+
+  socket: Socket;
+  keys: Array<boolean>;
+
+  constructor() {
+
+    this.keys = [false,false,false,false];
+    this.socket = io('http://localhost:3000');
+
+
+    this.socket.on('connect', () => {
+      console.log('Conectado al servidor');
+    });
+    
+  }
+
+}*/
+
+/*import io, { Socket } from 'socket.io-client';
 import { Camera, Renderer, Scene } from 'three';
 import Game from './game';
 

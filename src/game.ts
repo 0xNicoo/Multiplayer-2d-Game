@@ -1,3 +1,24 @@
+import Render from "./entities/components/render";
+import Entity from "./entities/entity";
+import GameEngine from "./gameEngine";
+import PlayerRender from "./render/player-render";
+
+export default class Game {
+  gameEngine: GameEngine;
+
+  constructor(ctx: CanvasRenderingContext2D) {
+    this.gameEngine = new GameEngine(ctx);
+    this.gameEngine.start();
+
+
+    const testEntity = new Entity();
+    const playerRender = new PlayerRender()
+    const renderComponent = new Render(playerRender);
+    testEntity.addComponent(renderComponent);
+    this.gameEngine.addEntity(testEntity);
+  }
+}
+
 /*import { Camera, Renderer, Scene } from "three";
 import Player from "./entities/player";
 import { Position } from "./entities/atributes/position";
