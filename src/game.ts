@@ -2,20 +2,46 @@ import Render from "./entities/components/render";
 import Entity from "./entities/entity";
 import GameEngine from "./gameEngine";
 import PlayerRender from "./render/player-render";
+import PlayerDTO from "./dto/playerDTO";
+import Position from "./entities/components/position";
 
 export default class Game {
   gameEngine: GameEngine;
+  player: PlayerDTO;
+  players: PlayerDTO[] = [];
 
   constructor(ctx: CanvasRenderingContext2D) {
     this.gameEngine = new GameEngine(ctx);
     this.gameEngine.start();
+    this.player = new PlayerDTO('000',{x:0, y:0}, "rgb(255,255,255)");
+  }
+
+  setPlayerId(playerId: string): void{
+    this.player.id = playerId;
+  }
+
+  setPlayers(players: PlayerDTO[]): void{
+    players.forEach((player) => {
+      this.createPlayerEntity(player);
+    })
+  }
 
 
-    const testEntity = new Entity();
-    const playerRender = new PlayerRender()
+  addOtherPlayerToGame(player: PlayerDTO): void{
+    if(this.player.id != player.id){
+      this.createPlayerEntity(player);
+    }
+  }
+
+  private createPlayerEntity(player: PlayerDTO){
+    this.players.push(player)
+    const entity = new Entity();
+    const positionComponent = new Position(player.position.x, player.position.y);
+    entity.addComponent(positionComponent);
+    const playerRender = new PlayerRender();
     const renderComponent = new Render(playerRender);
-    testEntity.addComponent(renderComponent);
-    this.gameEngine.addEntity(testEntity);
+    entity.addComponent(renderComponent);
+    this.gameEngine.addEntity(entity);
   }
 }
 

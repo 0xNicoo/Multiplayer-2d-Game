@@ -1,23 +1,37 @@
-/*import io, { Socket } from 'socket.io-client';
+import io, { Socket } from 'socket.io-client';
+import Game from './game';
 
 export default class ClientSocket {
-
   socket: Socket;
   keys: Array<boolean>;
+  game: Game;
+  private updateInterval: any;
 
-  constructor() {
-
+  constructor(game: Game){
     this.keys = [false,false,false,false];
-    this.socket = io('http://localhost:3000');
-
-
+    this.socket = io('http://localhost:3001');
+    this.game = game;
+  
     this.socket.on('connect', () => {
       console.log('Conectado al servidor');
     });
-    
-  }
 
-}*/
+    this.socket.on('logged', (gameInfo) => {
+      this.game.setPlayerId(gameInfo[0]);
+      this.game.setPlayers(gameInfo[1]);
+
+      this.updateInterval = setInterval(() => {
+        this.socket.emit('keyPressed', {keys: this.keys, playerId: this.game.player.id})
+      }, 50)
+    })
+
+    this.socket.on('newPlayer', (player)=> {
+      this.game.addOtherPlayerToGame(player);
+    })
+  }
+}
+
+
 
 /*import io, { Socket } from 'socket.io-client';
 import { Camera, Renderer, Scene } from 'three';

@@ -1,3 +1,3 @@
 export default interface RenderStrategy{
-    renderEntity(ctx: CanvasRenderingContext2D): any;
+    renderEntity(ctx: CanvasRenderingContext2D, x: number, y: number): any;
 }

@@ -22,7 +22,8 @@ export default class Entity  {
 
     draw(ctx: CanvasRenderingContext2D): void{
         const renderComponent = this.getComponent(Render);
-        renderComponent.renderEntity(ctx)
+        const positionComponent = this.getComponent(Position);
+        renderComponent.renderEntity(ctx, positionComponent.x, positionComponent.y);
     }
 
     update(): void{

@@ -10,7 +10,7 @@ export default class Render implements Component{
         this.render = render;
     }
 
-    renderEntity(ctx: CanvasRenderingContext2D){
-        this.render.renderEntity(ctx)
+    renderEntity(ctx: CanvasRenderingContext2D, x:number, y:number){
+        this.render.renderEntity(ctx, x, y)
     }
 }
