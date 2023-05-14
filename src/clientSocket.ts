@@ -25,6 +25,10 @@ export default class ClientSocket {
       }, 50)
     })
 
+    this.socket.on('playerDisconnect', (playerId) => {
+      this.game.deletePlayerFromGame(playerId);
+    })
+
     this.socket.on('newPlayer', (player)=> {
       this.game.addOtherPlayerToGame(player);
     })

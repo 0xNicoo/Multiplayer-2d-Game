@@ -79,6 +79,10 @@ export default class GameEngine{
         this.entities.push(entity);
     };
 
+    removeEntity(entityId: String){
+        this.entities.find(entity => entity.id == entityId)?.remove();
+    }
+
     draw() {
         // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);

@@ -33,9 +33,19 @@ export default class Game {
     }
   }
 
+  deletePlayerFromGame(playerId: string) {
+    for(let i = 0; i < this.players.length; i++){
+      if(this.players[i].id == playerId){
+        console.log(this.gameEngine.entities);
+        this.gameEngine.removeEntity(this.players[i].id);
+        this.players.splice(i, 1);
+      }
+    }
+  }
+
   private createPlayerEntity(player: PlayerDTO){
     this.players.push(player)
-    const entity = new Entity();
+    const entity = new Entity(player.id);
     const positionComponent = new Position(player.position.x, player.position.y);
     entity.addComponent(positionComponent);
     const playerRender = new PlayerRender();

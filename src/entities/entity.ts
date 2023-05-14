@@ -3,10 +3,12 @@ import Position from "./components/position";
 import Render from "./components/render";
 
 export default class Entity  {
+    id: string;
     removed: Boolean;
     components: Component[];
 
-    constructor(){
+    constructor(id: string){
+        this.id = id;
         this.components = [];
         this.removed = false;
     }
@@ -30,5 +32,8 @@ export default class Entity  {
        
     }
 
+    remove(){
+        this.removed = true;
+    }
 
 }
